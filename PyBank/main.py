@@ -1,7 +1,7 @@
 # Import CSV and OS modules
 import csv
 import os
-#print(os.getcwd())
+
 
 # Stores total number of months
 total_months = 0
@@ -30,7 +30,6 @@ greatest_profit_decrease = {
 #File Path
 budget_data_csv = os.path.join("Resources", "budget_data.csv")
 
-#print(budget_data_csv)
 
 # Opens the CSV file. Calculates total months nad the net total amount of P&L over a taime period.
 with open(budget_data_csv, mode="r") as file:
@@ -41,9 +40,7 @@ with open(budget_data_csv, mode="r") as file:
         total_months = total_months + 1
         #Add the current months profit/loss to net total
         net_total = net_total + int(row["Profit/Losses"])
-        #print(f"Net Total: {net_total}")
-        #print(row["Date"])
-       #print(total_months)
+        
 
 
         #Calulcates the changes from the previous month
@@ -67,14 +64,15 @@ with open(budget_data_csv, mode="r") as file:
 
 
         previous_profit_loss = int(row["Profit/Losses"])
+
+
 #Calculatte average change
-#average_change = sum(changes_profit_loss) / sum(changes_profit_loss) #if changes_profit_loss else 0
 if changes_profit_loss:
     average_change = sum(changes_profit_loss) / len(changes_profit_loss)
 else:
     average_change = 0
 
-
+#Stores string values as  tuple to be printed to the terminal
 final_analysis = (
     f"Financial Analysis",
     "----------------------------",

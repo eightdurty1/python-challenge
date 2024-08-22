@@ -2,8 +2,8 @@
 import csv
 import os
 
-# Variables
 
+#Variables
 #Total Votes
 total_votes = 0
 #List of cadidates
@@ -21,7 +21,7 @@ with open(election_data_csv, mode='r') as file:
     #Loop through ever row in the CSV file / increment total vote count
     for row in csv_reader:
         total_votes = total_votes + 1
-        #print(total_votes)
+        
 
         #Stores candidate name into a variable
         candidate_name = row['Candidate']
@@ -42,11 +42,12 @@ for candidate_name in candidates_list:
 
     results.append((candidate_name, percentage_vote, vote_count ))
 
+#Sortes results by vote count in descending order
 results.sort(key=lambda x:x[2], reverse=True)
-
+#Determines the candidate with highest vote count
 candidate_winner = results[0][0]
 
-
+#Stores final analysis values as strings into a tuple
 final_analysis = (
     f"Election Results",
     "-------------------------",
@@ -58,10 +59,11 @@ final_analysis = (
     "-------------------------",
 )
 
+#Joins the final analysis strings into a single string with newline 
 final_results_string = '\n'.join(final_analysis)
-
 print(final_results_string)
 
+#Prints each candidate's name, votes and vote count
 for candidate_name, percentage_vote, vote_count in results:
     print(f"{candidate_name}: {percentage_vote:3f}% ({vote_count})")
 
